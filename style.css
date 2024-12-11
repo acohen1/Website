@@ -1,44 +1,146 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+html, body {
     margin: 0;
     padding: 0;
-    text-align: center;
-  }
-  
-  header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-  }
-  
-  h1 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+header {
+    border-bottom: 1px solid #eaeaea;
+    padding: 1.5em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+}
+
+nav a {
+    margin: 0 0.5em;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    color: #005b99;
+}
+
+main {
+    max-width: 700px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+.profile h1 {
+    margin: 0 0 0.2em 0;
+    font-weight: 600;
+    font-size: 2em;
+    color: #222;
+}
+
+.profile p {
+    margin: 0.2em 0 1em 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.contact {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.contact a {
+    color: #005b99;
+    text-decoration: none;
+    margin: 0 0.3em;
+}
+.contact a:hover {
+    text-decoration: underline;
+}
+
+.contact .divider {
+    color: #aaa;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+section h2 {
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 1em;
+    padding-bottom: 0.2em;
+}
+
+.entry {
+    margin-bottom: 1.5em;
+}
+
+.entry h3 {
+    margin: 0 0 0.5em 0;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.date {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #777;
+}
+
+.entry ul {
     margin: 0;
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
-  
-  footer {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    position: absolute;
-    bottom: 0;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+
+.entry ul li {
+    margin-bottom: 0.5em;
+}
+
+p, li {
+    font-size: 0.95em;
+    color: #444;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1em;
+    margin-top: 2em;
+}
+
+.gallery-grid img {
     width: 100%;
-  }
-  
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+    .date {
+        display: block;
+        margin-top: 0.3em;
+    }
+}
