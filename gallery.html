@@ -6,6 +6,78 @@
     <meta name="description" content="Alex Cohen - Gallery"/>
     <title>Alex Cohen - Gallery</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 999; /* Sit on top */
+            padding-top: 60px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+        }
+
+        /* Modal Content (enlarged image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        /* Caption of Modal Image (Below the image) */
+        #caption {
+            margin: auto;
+            display: block;
+            text-align: center;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+
+        /* Add animation (optional) */
+        .modal-content, #caption {  
+            animation-name: zoom;
+            animation-duration: 0.3s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0.9)} 
+            to {transform:scale(1)} 
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .gallery-grid img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,15 +93,52 @@
         <section>
             <h2>Gallery</h2>
             <p>A collection of visuals from my work, including robotics simulations, data visualizations, and code examples.</p>
-
+            
+            <h3>Brain Tumor Detection Model</h3>
             <div class="gallery-grid">
-                <!-- Replace these placeholders with your actual images -->
-                <img src="https://via.placeholder.com/400x300.png?text=Robotics+Simulation" alt="Robotics Simulation">
-                <img src="https://via.placeholder.com/400x300.png?text=Data+Visualization" alt="Data Visualization">
-                <img src="https://via.placeholder.com/400x300.png?text=Code+Snippet" alt="Code Snippet">
-                <img src="https://via.placeholder.com/400x300.png?text=ML+Model+Metrics" alt="ML Model Metrics">
+                <img src="media/tumor_classification.png" alt="A grid of MRI brain scans, each labeled as either ‘No Tumor’ or ‘Yes Tumor,’ representing the binary classification outcomes from the trained model.">
+                <img src="media/tumor_classification_2.png" alt="A grid of MRI brain scans labeled with tumor types (such as pituitary, meningioma, or glioma) as identified by the VGG-16 CNN classification model.">
+                <img src="media/accuracy.png" alt="A summarized visualization of the model's performance, featuring a confusion matrix indicating classifications for two classes, a training vs. validation loss plot showing performance improvements over epochs, and a classification metrics table (precision, recall, f1-score) illustrating an overall accuracy of approximately 96.3%.">
             </div>
+            <h3>Discord Bot</h3>
         </section>
     </main>
+
+    <!-- The Modal -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Get the modal
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const captionText = document.getElementById("caption");
+        const closeBtn = document.querySelector(".close");
+
+        // Get all images in the gallery
+        const images = document.querySelectorAll(".gallery-grid img");
+        images.forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                captionText.innerHTML = img.alt;
+            });
+        });
+
+        // Close the modal when the close button is clicked
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Also close the modal if user clicks anywhere outside the modal image
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
