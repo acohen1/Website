@@ -41,6 +41,25 @@ main {
     padding: 0 1em;
 }
 
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the image and the text */
+}
+
+.profile img {
+    flex-shrink: 0; /* Ensures the image keeps its size */
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-details h1 {
+    margin: 0 0 0.2em 0;
+}
+
 .profile h1 {
     margin: 0 0 0.2em 0;
     font-weight: 600;
