@@ -98,6 +98,12 @@ section h2 {
     flex-wrap: wrap;
 }
 
+.entry:not(:last-child) {
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 1.5em;
+    margin-bottom: 2em;
+}
+
 .date {
     font-size: 0.9em;
     font-weight: normal;
